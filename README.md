@@ -1,2 +1,5 @@
+# ДЗ для курса OTUS ["Разработчик Java"](https://otus.ru/lessons/java-professional/?utm_source=github&utm_medium=free&utm_campaign=otus)
+
 # otus_java
-Educational project
+Евсюков Андрей
+1. ДЗ к "Проект gradle с модульной структурой"
