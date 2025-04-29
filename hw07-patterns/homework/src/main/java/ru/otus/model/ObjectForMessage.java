@@ -9,6 +9,12 @@ public class ObjectForMessage {
         return data;
     }
 
+    public ObjectForMessage() {}
+
+    public ObjectForMessage(ObjectForMessage forMessage) {
+        this.data = List.copyOf(forMessage.data);
+    }
+
     public void setData(List<String> data) {
         this.data = data;
     }

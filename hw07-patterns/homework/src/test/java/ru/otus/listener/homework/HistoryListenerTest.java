@@ -3,6 +3,7 @@ package ru.otus.listener.homework;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 import java.util.ArrayList;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.otus.model.Message;
 import ru.otus.model.ObjectForMessage;
@@ -10,6 +11,7 @@ import ru.otus.model.ObjectForMessage;
 class HistoryListenerTest {
 
     @Test
+    @DisplayName("Тестируем работу листенера истории")
     void listenerTest() {
         // given
         var historyListener = new HistoryListener();
@@ -32,7 +34,6 @@ class HistoryListenerTest {
         // then
         var messageFromHistory = historyListener.findMessageById(id);
         assertThat(messageFromHistory).isPresent();
-        // TODO: раскоментировать
         assertThat(messageFromHistory.get().getField13().getData()).containsExactly(data);
     }
 }
