@@ -6,6 +6,7 @@ include("hw04-gc:homework")
 include("hw05-cloader:homework")
 include("hw06-bankomat:homework")
 include("hw07-patterns:homework")
+include("hw08-io:homework")
 
 
 pluginManagement {
