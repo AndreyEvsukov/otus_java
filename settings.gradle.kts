@@ -7,7 +7,7 @@ include("hw05-cloader:homework")
 include("hw06-bankomat:homework")
 include("hw07-patterns:homework")
 include("hw08-io:homework")
-
+include("hw09-jdbc:homework")
 
 pluginManagement {
     val jgitver: String by settings
