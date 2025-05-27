@@ -9,7 +9,6 @@ include("hw07-patterns:homework")
 include("hw08-io:homework")
 include("hw09-jdbc:homework")
 
-
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
