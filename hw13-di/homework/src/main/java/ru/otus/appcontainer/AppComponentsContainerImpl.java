@@ -93,11 +93,14 @@ public class AppComponentsContainerImpl implements AppComponentsContainer {
     public <C> C getAppComponent(Class<C> componentClass) {
         final var component = appComponents.stream()
                 .filter(c -> componentClass.isAssignableFrom(c.getClass()))
-                .findFirst();
+                .toList();
+        if (component.size() > 1) {
+            throw new RuntimeException(String.format("Component %s is not unique", componentClass.getName()));
+        }
         if (component.isEmpty()) {
             throw new RuntimeException(String.format("Component %s not found", componentClass.getName()));
         }
-        return componentClass.cast(component.get());
+        return componentClass.cast(component.getFirst());
     }
 
     @SuppressWarnings("unchecked")
