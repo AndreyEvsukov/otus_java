@@ -43,7 +43,7 @@ public class DbServiceClientImpl implements DBServiceClient {
                         .map(phone -> new Phone(phone.id(), phone.number(), savedClient.id()))
                         .toList();
 
-                updatedPhones.forEach(phoneRepository::save);
+                phoneRepository.saveAll(updatedPhones);
             }
             log.info("saved client: {}", savedClient);
             return savedClient;
