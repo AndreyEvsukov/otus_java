@@ -13,6 +13,7 @@ include("hw11-cache:homework")
 include("hw12-webserver:homework")
 include("hw13-di:homework")
 include("hw14-springdata:homework")
+include("hw15-executors")
 
 pluginManagement {
     val jgitver: String by settings
