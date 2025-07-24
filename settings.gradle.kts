@@ -14,6 +14,7 @@ include("hw12-webserver:homework")
 include("hw13-di:homework")
 include("hw14-springdata:homework")
 include("hw15-executors")
+include("hw16-collections:homework")
 
 pluginManagement {
     val jgitver: String by settings

@@ -17,3 +17,4 @@
 13. ДЗ к "Dependency injection"
 14. ДЗ к "Spring Data JDBC"
 15. ДЗ к "Executors"
+16. ДЗ к "Коллекции"
