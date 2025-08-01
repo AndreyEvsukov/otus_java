@@ -18,11 +18,7 @@ public class GRPCClient {
             boolean interrupted = false;
             for (int i = 0; i < config.iterations(); i++) {
                 long lastValue = observer.getLastServerValue();
-                if (lastValue > 0) {
-                    currentValue = currentValue + lastValue + 1;
-                } else {
-                    currentValue++;
-                }
+                currentValue = currentValue + lastValue + 1;
                 logger.info("Current value: {}", currentValue);
 
                 if (!sleepAndCheckInterrupted(config.sleepMillis())) {

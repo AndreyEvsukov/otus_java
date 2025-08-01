@@ -33,9 +33,7 @@ public class NumbersStreamObserver implements StreamObserver<ServerResponse> {
     }
 
     public long getLastServerValue() {
-        final long lastValue = this.lastServerValue.get();
-        this.lastServerValue.set(0);
-        return lastValue;
+        return this.lastServerValue.getAndSet(0);
     }
 
     public CountDownLatch getCompletionLatch() {
