@@ -16,6 +16,8 @@ include("hw14-springdata:homework")
 include("hw15-executors")
 include("hw16-collections:homework")
 include("hw17-gRPC:homework")
+include("hw18-wflux:client-service")
+include("hw18-wflux:datastore-service")
 
 pluginManagement {
     val jgitver: String by settings
