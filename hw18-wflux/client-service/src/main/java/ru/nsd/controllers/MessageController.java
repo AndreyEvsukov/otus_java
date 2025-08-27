@@ -70,10 +70,15 @@ public class MessageController {
             return;
         }
         logger.info("subscription for:{}, roomId:{}, user:{}", simpDestination, roomId, principal.getName());
-        // /user/f6532733-51db-4d0e-bd00-1267dddc7b21/topic/response.1
-        getMessagesByRoomId(roomId)
-                .doOnError(ex -> logger.error("getting messages for roomId:{} failed", roomId, ex))
-                .subscribe(message -> template.convertAndSendToUser(principal.getName(), simpDestination, message));
+        if (SPECIAL_ROOM_ID.equals(roomId)) {
+            getAllMessages()
+                    .doOnError(ex -> logger.error("getting messages for roomId:{} failed", SPECIAL_ROOM_ID, ex))
+                    .subscribe(message -> template.convertAndSendToUser(principal.getName(), simpDestination, message));
+        } else {
+            getMessagesByRoomId(roomId)
+                    .doOnError(ex -> logger.error("getting messages for roomId:{} failed", roomId, ex))
+                    .subscribe(message -> template.convertAndSendToUser(principal.getName(), simpDestination, message));
+        }
     }
 
     private long parseRoomId(String simpDestination) {
@@ -95,10 +100,18 @@ public class MessageController {
                 .exchangeToMono(response -> response.bodyToMono(Long.class));
     }
 
+    private Flux<Message> getAllMessages() {
+        return getMessagesByURI("/all_messages");
+    }
+
     private Flux<Message> getMessagesByRoomId(long roomId) {
+        return getMessagesByURI(String.format("/msg/%s", roomId));
+    }
+
+    private Flux<Message> getMessagesByURI(String dsUri) {
         return datastoreClient
                 .get()
-                .uri(String.format("/msg/%s", roomId))
+                .uri(dsUri)
                 .accept(MediaType.APPLICATION_NDJSON)
                 .exchangeToFlux(response -> {
                     if (response.statusCode().equals(HttpStatus.OK)) {
